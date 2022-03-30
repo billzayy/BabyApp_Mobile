@@ -8,94 +8,90 @@
 import SwiftUI
 
 enum AlphabeltButton: String{
-    case A = "A"
-    case B = "B"
-    case C = "C"
-    case D = "D"
-    case E = "E"
-    case F = "F"
-    case G = "G"
-    case H = "H"
-    case I = "I"
-    case J = "J"
-    case K = "K"
-    case L = "L"
-    case M = "M"
-    case N = "N"
-    case O = "O"
-    case P = "P"
-    case Q = "Q"
-    case R = "R"
-    case S = "S"
-    case T = "T"
-    case U = "U"
-    case V = "V"
-    case W = "W"
-    case X = "X"
-    case Y = "Y"
-    case Z = "Z"
+    case a = "A letter"
+    case b = "B letter"
+    case c = "C letter"
+    case d = "D letter"
+    case e = "E letter"
+    case f = "F letter"
+    case g = "G letter"
+    case h = "H letter"
+    case i = "I letter"
+    case j = "J letter"
+    case k = "K letter"
+    case l = "L letter"
+    case m = "M letter"
+    case n = "N letter"
+    case o = "O letter"
+    case p = "P letter"
+    case q = "Q letter"
+    case r = "R letter"
+    case s = "S letter"
+    case t = "T letter"
+    case u = "U letter"
+    case v = "V letter"
+    case w = "W letter"
+    case x = "X letter"
+    case y = "Y letter"
+    case z = "Z letter"
 }
 
 struct AlphabeltView: View {
     @State var backHome = false
     
-    let buttons: [[AlphabeltButton]] = [
-        [.A, .B, .C, .D],
-        [.E, .F, .G, .H],
-        [.I, .J, .K, .L],
-        [.M, .N, .O, .P],
-        [.Q, .R, .S, .T],
-        [.U, .V, .W, .X],
-        [.Y, .Z],
-    ]
     var body: some View {
         ZStack{
-            Color.orange.ignoresSafeArea()
             VStack{
-                Spacer().frame(height: 70)
-                Text("Bảng chữ cái Tiếng anh")
-                    .multilineTextAlignment(.leading)
+                Spacer().frame(height: 80)
+                Text("Alphabelt")
+                    .fontWeight(.heavy)
                     .padding()
-                    .font(.largeTitle)
-                Spacer().frame(height: 13)
-                VStack{
-                    ForEach(buttons, id: \.self){row in
-                        HStack{
-                            ForEach(row,id: \.self){item in
-                                Button(action:{
-                                    
-                                },label: {
-                                    Text(item.rawValue)
-                                        .frame(width: 70, height: 70)
-                                        .background(Color.teal)
-                                        .foregroundColor(.white)
-                                        .cornerRadius(20)
-                                        .font(.system(size: 32))
-                                })
-                            }
-                        }
-                    }
-                }
-                Spacer()
+                    .font(.system(size: 35))
+                    .foregroundColor(Color.black)
+                Spacer().frame(height: 0)
+                TabView{
+                    PageView1()
+                        .padding()
+                    PageView2()
+                        .padding()
+                    PageView3()
+                        .padding()
+                    PageView4()
+                        .padding()
+                    PageView5()
+                        .padding()
+                    PageView6()
+                        .padding()
+                    PageView7()
+                        .padding()
+                }.tabViewStyle(PageTabViewStyle())
+                Spacer().frame(height: 70)
                 Button(action : {
                     self.backHome.toggle()
                 }){
                     HStack{
-                        Text("Home")
-                            .multilineTextAlignment(.center)
-                            .padding(.leading,-5)
+                        Image(systemName: "house")
+                            .font(.system(size: 50))
+                            .padding(.trailing, -15)
+                            .padding(.leading, 10)
                             .padding()
-                            .frame(width: 200)
-                            .font(.title2)
-                            .foregroundColor(Color.white)
-                    }
-                    .background(Color.red)
-                    .cornerRadius(100)
+                        Text("Home")
+                            .padding(.trailing, 40)
+//                            .frame(width: 141, height: 23)
+                            .font(.system(size: 40))
+                    }.foregroundColor(Color.white.opacity(1))
+                        .background(Color(red:0.03922, green:0.19608, blue:0.00000,opacity: 0.8))
+                        .cornerRadius(100)
                 }.fullScreenCover(isPresented: $backHome, onDismiss: nil){
                     ContentView()
                 }
             }
-        }
+        }.background(
+            Image("BackgroundAlpha")
+                .resizable()
+                .scaledToFill()
+                .ignoresSafeArea()
+        )
     }
 }
 
