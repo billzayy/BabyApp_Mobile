@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVKit
 
 enum NumberButton: String{
     case one = "1"
@@ -20,6 +21,24 @@ enum NumberButton: String{
     case zero = "0"
 }
 
+class SoundManagerNum{
+    static let instance = SoundManagerNum()
+    
+    var player: AVAudioPlayer?
+    
+    func playSound(sound: NumberButton){
+        guard let url = Bundle.main.url(forResource: sound.rawValue, withExtension: ".wav") else { return }
+        
+        do{
+            player = try AVAudioPlayer(contentsOf: url)
+            player?.play()
+        }catch let  error{
+            print("Error play sound .\(error.localizedDescription)")
+        }
+    }
+}
+
+
 struct NumberView: View {
     @State var backHome = false
     let buttons : [[NumberButton]] = [
@@ -30,27 +49,26 @@ struct NumberView: View {
     ]
     var body: some View {
         ZStack{
-            Color.blue.ignoresSafeArea()
             VStack{
-                Spacer().frame(height: 70)
-                Text("Bảng chữ số")
+                Spacer().frame(height: 30)
+                Text("Number")
                     .multilineTextAlignment(.leading)
                     .padding()
-                    .font(.largeTitle)
-                    .foregroundColor(.white)
-                Spacer().frame(height: 80)
+                    .font(.system(size: 35, weight: .heavy))
+                    .foregroundColor(.black)
+                Spacer().frame(height: 20)
                 ForEach(buttons, id: \.self){row in
                     HStack{
                         ForEach(row,id: \.self){item in
                             Button(action:{
-                                
+                                SoundManagerNum.instance.playSound(sound: item)
                             },label: {
-                                Text(item.rawValue)
-                                    .frame(width: 100, height: 100)
-                                    .background(Color.mint)
-                                    .foregroundColor(.white)
+                                Image(item.rawValue) 
+                                    .resizable()
+                                    .frame(width: 110, height: 110)
+                                    .background(Color(red: 0.99, green: 0.95, blue: 0.61, opacity: 1.00))
                                     .cornerRadius(20)
-                                    .font(.system(size: 32))
+                                    .padding(5)
                             })
                         }
                     }
@@ -60,20 +78,28 @@ struct NumberView: View {
                     self.backHome.toggle()
                 }){
                     HStack{
-                        Text("Home")
-                            .multilineTextAlignment(.center)
+                        Image(systemName: "house")
+                            .font(.system(size: 50))
+                            .padding(.trailing, -15)
+                            .padding(.leading, 10)
                             .padding()
-                            .frame(width: 200)
-                            .font(.title2)
-                            .foregroundColor(Color.white)
-                    }
-                    .background(Color.orange)
-                    .cornerRadius(50)
+                        Text("Home")
+                            .padding(.trailing, 40)
+//                            .frame(width: 141, height: 23)
+                            .font(.system(size: 40))
+                    }.foregroundColor(Color.white.opacity(1))
+                        .background(Color(red:0.03922, green:0.19608, blue:0.00000,opacity: 0.8))
+                        .cornerRadius(100)
                 }.fullScreenCover(isPresented: $backHome, onDismiss: nil){
                     ContentView()
                 }
             }
-        }
+        }.background(
+            Image("Background Num")
+                .resizable()
+                .scaledToFill()
+                .ignoresSafeArea()
+        )
     }
 }
 

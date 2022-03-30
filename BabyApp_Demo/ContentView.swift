@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVKit
 
 struct ContentView: View {
     
@@ -14,20 +15,21 @@ struct ContentView: View {
     @State var showAnimal = false
     var body: some View {
         ZStack{
-            Color.teal.ignoresSafeArea()
             VStack{
-                Spacer().frame(height: 30)
-                Text("T.A.P")
-                    .fontWeight(.heavy)
-                    .padding()
-                    .font(.largeTitle)
+                
+                Spacer().frame(height: 100)
+//                Text("T.A.P")
+//                    .fontWeight(.heavy)
+//                    .padding()
+//                    .font(.largeTitle)
                 Image("myImage")
                 Spacer()
                 Text("Baby App Project")
                     .fontWeight(.bold)
                     .padding()
                     .font(.largeTitle)
-                Spacer().frame(height: 100)
+                    .foregroundColor(Color.black)
+                Spacer().frame(height: 175)
             }
             VStack{
                 HStack{
@@ -51,7 +53,9 @@ struct ContentView: View {
                                 .foregroundColor(Color.white)
                                 .padding(.trailing, 15)
                         }
-                        .background(Color.red)
+                        .background(
+                            Color.red
+                        )
                         .cornerRadius(100)
                     }.fullScreenCover(isPresented: $showAlphabelt){
                         AlphabeltView()
@@ -114,7 +118,11 @@ struct ContentView: View {
                     }
                 }
             }
-        }
+        }.background(
+            Image("BackgroundMain")
+                .resizable()
+                .scaledToFill()
+        ).ignoresSafeArea()
     }
 }
 

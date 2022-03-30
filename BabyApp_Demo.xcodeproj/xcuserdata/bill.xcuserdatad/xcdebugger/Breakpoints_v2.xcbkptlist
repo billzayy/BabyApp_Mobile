@@ -7,15 +7,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E9304742-C81B-44F6-A4B9-0647F51DA582"
+            uuid = "E4AFDE11-0098-4513-A73F-7CD7C73DAE37"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AlphabeltView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "10"
-            endingLineNumber = "10"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
             landmarkName = "AlphabeltButton"
             landmarkType = "13">
          </BreakpointContent>

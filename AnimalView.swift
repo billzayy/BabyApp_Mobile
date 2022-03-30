@@ -8,90 +8,69 @@
 import SwiftUI
 
 enum AnimalButton: String{
-    case A = "Ant"
-    case B = "Bee"
-    case C = "Cow"
-    case D = "Dog"
-    case E = "Elephant"
-    case F = "Flamingo"
-    case G = "Girrafe"
-    case H = "Horse"
-    case I = "Insect"
-    case J = "Jaguar"
-    case K = "Koala"
-    case L = "Lion"
-    case M = "Monkey"
-    case N = "Narwhal"
-    case O = "Octopus"
-    case P = "Panda"
-    case Q = "Quail"
-    case R = "Rabbit"
-    case S = "Snail"
-    case T = "Tiger"
-    case U = "Unicorn"
-    case V = "Vulture"
-    case W = "Whale"
-    case X = "Xantus"
-    case Y = "Yurumi"
-    case Z = "Zebra"
+    case rat = "Rat"
+    case ox = "Ox"
+    case tiger = "Tiger"
+    case cat = "Cat"
+    case dragon = "Dragon-Call"
+    case snake = "Snake"
+    case horse = "Horse"
+    case goat = "Goat"
+    case monkey = "Monkey"
+    case rooster = "Rooster"
+    case dog = "Dog"
+    case pig = "Pig"
 }
 struct AnimalView: View {
     @State var backHome = false
     
     let buttons: [[AnimalButton]] = [
-        [.A, .B, .C, .D],
-        [.E, .F, .G, .H],
-        [.I, .J, .K, .L],
-        [.M, .N, .O, .P],
-        [.Q, .R, .S, .T],
-        [.U, .V, .W, .X],
-        [.Y, .Z],
+        [.rat, .ox],
+        [.tiger, .cat]
     ]
     var body: some View {
         ZStack{
-            Color.green.ignoresSafeArea()
             VStack{
-                Spacer().frame(height: 10)
-                Text("Bảng động vật")
-                    .multilineTextAlignment(.center)
+                Spacer().frame(height: 50)
+                Text("Animal")
                     .padding()
-                    .font(.largeTitle)
-                Spacer().frame(height: 10)
-                ForEach(buttons, id: \.self){row in
-                    HStack{
-                        ForEach(row,id: \.self){item in
-                            Button(action:{
-                                
-                            },label: {
-                                Text(item.rawValue)
-                                    .frame(width:90, height:90)
-                                    .background(Color.pink)
-                                    .foregroundColor(.white)
-                                    .cornerRadius(20)
-                                    .font(.system(size: 20))
-                            })
-                        }
-                    }
-                }
-                Spacer()
+                    .font(.system(size: 40, weight: .heavy))
+                Spacer().frame(height: 1)
+                TabView{
+                    PageAnimalView1()
+                        .padding()
+                    PageAnimalView2()
+                        .padding()
+                    PageAnimalView3()
+                        .padding()
+                }.tabViewStyle(PageTabViewStyle())
+                Spacer().frame(height: 50)
                 Button(action : {
                     self.backHome.toggle()
                 }){
                     HStack{
-                        Text("Home")
-                            .multilineTextAlignment(.center)
+                        Image(systemName: "house")
+                            .font(.system(size: 50))
+                            .padding(.trailing, -15)
+                            .padding(.leading, 10)
                             .padding()
-                            .frame(width: 200)
-                            .font(.title2)
-                            .foregroundColor(Color.white)
-                    }
-                    .background(Color.orange)
-                    .cornerRadius(50)
+                        Text("Home")
+                            .padding(.trailing, 40)
+//                            .frame(width: 141, height: 23)
+                            .font(.system(size: 40))
+                    }.foregroundColor(Color.white.opacity(1))
+                        .background(Color(red:0.03922, green:0.19608, blue:0.00000,opacity: 0.8))
+                        .cornerRadius(100)
                 }.fullScreenCover(isPresented: $backHome, onDismiss: nil){
                     ContentView()
                 }
             }
-        }
+        }.background(
+            Image("Background Animal")
+                .resizable()
+                .scaledToFill()
+                .ignoresSafeArea()
+        )
     }
 }
 

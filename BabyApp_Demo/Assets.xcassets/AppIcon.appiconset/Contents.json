@@ -1,6 +1,7 @@
 {
   "images" : [
     {
+      "filename" : "Cow 40px.jpeg",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "20x20"
@@ -26,11 +27,13 @@
       "size" : "40x40"
     },
     {
+      "filename" : "milk-cow-120x120.jpeg",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "40x40"
     },
     {
+      "filename" : "milk-cow-120x120-1.jpeg",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "60x60"
@@ -71,6 +74,7 @@
       "size" : "40x40"
     },
     {
+      "filename" : "3900_5_10.jpeg",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "76x76"
