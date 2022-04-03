@@ -13,15 +13,12 @@ struct ContentView: View {
     @State var showNumber = false
     @State var showAlphabelt = false
     @State var showAnimal = false
+    
     var body: some View {
-        ZStack{
-            VStack{
-                
+        ZStack{ // Tạo khuôn tổng cho giao diện bằng ZStack
+            
+            VStack{ // Tạo Vstack cho các thuộc tính để dọc
                 Spacer().frame(height: 100)
-//                Text("T.A.P")
-//                    .fontWeight(.heavy)
-//                    .padding()
-//                    .font(.largeTitle)
                 Image("myImage")
                 Spacer()
                 Text("Baby App Project")
@@ -31,12 +28,14 @@ struct ContentView: View {
                     .foregroundColor(Color.black)
                 Spacer().frame(height: 175)
             }
+            
             VStack{
-                HStack{
+                // Nút Bảng chữ cái
+                HStack{ // Tách nút "bảng chữ cái" với các nút khác
                     Button(action : {
                         self.showAlphabelt.toggle()
                     }){
-                        HStack{
+                        HStack{ // Cho tất cả thuộc tính trong nút nằm ngang
                             Image(systemName: "a.circle")
                                 .font(.title)
                                 .foregroundColor(Color.white)
@@ -53,20 +52,20 @@ struct ContentView: View {
                                 .foregroundColor(Color.white)
                                 .padding(.trailing, 15)
                         }
-                        .background(
-                            Color.red
-                        )
+                        .background(Color.red)
                         .cornerRadius(100)
                     }.fullScreenCover(isPresented: $showAlphabelt){
-                        AlphabeltView()
+                        AlphabeltView() // => Chuyển qua màn hình Chữ Cái
                     }
                 }
                 Spacer().frame(height: 35)
+                
+                // Nút bảng chữ số
                 HStack{
                     Button(action: {
                         self.showNumber.toggle()
                     }){
-                        HStack{
+                        HStack{ // Cho các thuộc tính trong nút nằm ngang
                             Image(systemName: "1.circle")
                                 .font(.title)
                                 .foregroundColor(Color.white)
@@ -86,15 +85,17 @@ struct ContentView: View {
                         .background(Color.blue)
                         .cornerRadius(100)
                     }.fullScreenCover(isPresented: $showNumber){
-                        NumberView()
+                        NumberView() // => Chuyển qua màn hình chữ số
                     }
                 }
                 Spacer().frame(height: 35)
+                
+                //Nút Bảng động vật
                 HStack{
                     Button(action : {
                         self.showAnimal.toggle()
                     }){
-                        HStack{
+                        HStack{ // Cho các thuộc tính trong nút nằm ngang
                             Image(systemName: "pawprint.fill")
                                 .font(.title)
                                 .foregroundColor(Color.white)
@@ -114,15 +115,17 @@ struct ContentView: View {
                         .background(Color.green)
                         .cornerRadius(100)
                     }.fullScreenCover(isPresented: $showAnimal){
-                        AnimalView()
+                        AnimalView() // => Chuyển qua màn hình Động vật
                     }
                 }
+                
             }
-        }.background(
+        }.background( // Chỉnh ảnh background
             Image("BackgroundMain")
-                .resizable()
-                .scaledToFill()
-        ).ignoresSafeArea()
+                .resizable() // Chỉnh lại size hình ảnh cho phù hợp với màn hình
+                .scaledToFill() // Cho hình ảnh tràn đầy ô ZStack
+        ).ignoresSafeArea() // Cho hình màn đi ra full màn hình
+        
     }
 }
 
@@ -130,6 +133,6 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
             .previewDisplayName("mainPage")
-.previewInterfaceOrientation(.portrait)
+            .previewInterfaceOrientation(.portrait)
     }
 }

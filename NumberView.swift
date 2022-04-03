@@ -41,7 +41,8 @@ class SoundManagerNum{
 
 struct NumberView: View {
     @State var backHome = false
-    let buttons : [[NumberButton]] = [
+    let buttons : [[NumberButton]] =
+    [
         [.one, .two, .three],
         [.four, .five, .six],
         [.seven, .eigth, .nine],
@@ -57,6 +58,7 @@ struct NumberView: View {
                     .font(.system(size: 35, weight: .heavy))
                     .foregroundColor(.black)
                 Spacer().frame(height: 20)
+                
                 ForEach(buttons, id: \.self){row in
                     HStack{
                         ForEach(row,id: \.self){item in
@@ -73,7 +75,9 @@ struct NumberView: View {
                         }
                     }
                 }
+                
                 Spacer()
+                
                 Button(action : {
                     self.backHome.toggle()
                 }){

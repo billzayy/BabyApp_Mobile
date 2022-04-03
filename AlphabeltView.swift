@@ -8,7 +8,7 @@
 import SwiftUI
 
 enum AlphabeltButton: String{
-    case a = "A letter"
+    case a = "A letter" // Key = Value
     case b = "B letter"
     case c = "C letter"
     case d = "D letter"
@@ -66,6 +66,7 @@ struct AlphabeltView: View {
                         .padding()
                 }.tabViewStyle(PageTabViewStyle())
                 Spacer().frame(height: 70)
+                
                 Button(action : {
                     self.backHome.toggle()
                 }){
@@ -77,7 +78,6 @@ struct AlphabeltView: View {
                             .padding()
                         Text("Home")
                             .padding(.trailing, 40)
-//                            .frame(width: 141, height: 23)
                             .font(.system(size: 40))
                     }.foregroundColor(Color.white.opacity(1))
                         .background(Color(red:0.03922, green:0.19608, blue:0.00000,opacity: 0.8))
@@ -88,9 +88,9 @@ struct AlphabeltView: View {
             }
         }.background(
             Image("BackgroundAlpha")
-                .resizable()
-                .scaledToFill()
-                .ignoresSafeArea()
+                .resizable() // Chỉnh lại size hình ảnh cho phù hợp với màn hình
+                .scaledToFill() // Cho hình ảnh tràn đầy ô ZStack
+                .ignoresSafeArea() // Cho hình màn đi ra full màn hình
         )
     }
 }
